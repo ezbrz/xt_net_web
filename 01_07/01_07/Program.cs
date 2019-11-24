@@ -10,8 +10,8 @@ namespace _01_07
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10];
-            pullArray(arr);
+            int[] arr = new int[100];
+            PullArray(arr);
             ShowArray(arr);
             Console.WriteLine($"\nMinimal value: {GetVal(arr, SearchType.min)}\nMaximum value: {GetVal(arr, SearchType.max)}");
             SortArray(arr);
@@ -19,7 +19,7 @@ namespace _01_07
             Console.ReadKey();
         }
 
-        static void pullArray(int[] arr)
+        static void PullArray(int[] arr)
         {
             Random rnd = new Random();
             for (int i = 0; i<arr.Length; i++)
