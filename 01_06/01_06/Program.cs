@@ -10,25 +10,25 @@ namespace _01_06
     {
         static void Main(string[] args)
         {
-            FontAdj MyFont = new FontAdj();
+            FontAdjustment MyFont = new FontAdjustment();
             int fontParam;
             do
             {
                 
-                Console.WriteLine($"Параметры надписи:{MyFont.MyFontAdj}");
-                MyFont.getEnum();
+                Console.WriteLine($"Параметры надписи:{MyFont}");
+                getEnum();
                 GetValue(out fontParam);
 
                 switch (fontParam)
                 {
                     case 1:
-                        MyFont.MyFontAdj ^= FontAdjustment.bold;
+                        MyFont ^= FontAdjustment.bold;
                         break;
                     case 2:
-                        MyFont.MyFontAdj ^= FontAdjustment.italic;
+                        MyFont ^= FontAdjustment.italic;
                         break;
                     case 3:
-                        MyFont.MyFontAdj ^= FontAdjustment.underline;
+                        MyFont ^= FontAdjustment.underline;
                         break;
                 }
             } while (fontParam != 4);
@@ -42,19 +42,14 @@ namespace _01_06
             italic = 2,
             underline = 4
         }
-        class FontAdj
-        {
-            public FontAdjustment MyFontAdj;
 
-            public void getEnum()
+        static void getEnum()
+        {
+            for (int i = 1; i < Enum.GetValues(typeof(FontAdjustment)).Length; i++)
             {
-                for (int i = 1; i < Enum.GetValues(typeof(FontAdjustment)).Length; i++)
-                {
-                    Console.WriteLine($"{i,10}: {Enum.GetValues(typeof(FontAdjustment)).GetValue(i)}");
-                }
+                Console.WriteLine($"{i,10}: {Enum.GetValues(typeof(FontAdjustment)).GetValue(i)}");
             }
         }
-
         static int GetValue(out int val)
         {
             do
