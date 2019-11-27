@@ -56,9 +56,9 @@ namespace _02_01
         }
         public Round(Point centerPoint, double roundRadius)
         {
-            GetDistance(centerPoint, roundRadius);
             CenterPoint = centerPoint;
             RoundRadius = roundRadius;
+            GetDistance(centerPoint, roundRadius);
         }
         public override string ToString()
         {
