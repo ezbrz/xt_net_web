@@ -10,6 +10,14 @@ namespace _02_04
     {
         static void Main(string[] args)
         {
+            MyString abc = new MyString(Console.ReadLine());
+            MyString def = new MyString(Console.ReadLine());
+            MyString hhh = MyString.Append(abc, def);
+            
+            Console.WriteLine(hhh.ToString());
+            Console.WriteLine(MyString.IsEqual(abc, def));
+            Console.WriteLine(abc.FindChar('j'));
+            Console.ReadKey();
         }
     }
 }
