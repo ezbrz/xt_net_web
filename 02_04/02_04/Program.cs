@@ -15,6 +15,7 @@ namespace _02_04
             MyString hhh = MyString.Append(abc, def);
             
             Console.WriteLine(hhh.ToString());
+            Console.WriteLine(hhh.Length);
             Console.WriteLine(MyString.IsEqual(abc, def));
             Console.WriteLine(abc.FindChar('j'));
             Console.ReadKey();
