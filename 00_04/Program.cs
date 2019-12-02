@@ -17,10 +17,9 @@ namespace _00_04
                 Console.Write("{");
                 for (int j = 0; j < array[i].Length; ++j)
                 {
-                    Console.Write("{0},", array[i][j]);
+                    Console.Write($"{array[i][j]},");
                 }
                 Console.Write("},");
-
             }
             Console.Write("}");
         }
@@ -36,13 +35,21 @@ namespace _00_04
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter N");
-            int array_size = int.Parse(Console.ReadLine());
-            int[][] array = new int[array_size][];
-            for (int i = 0; i < array_size; i++)
+            int arraySize = 0;
+            int arrayLineSize = 0;
+            do
             {
-                int array_line_size = int.Parse(Console.ReadLine());
-                array[i] = new int[array_line_size];
+                Console.WriteLine("Enter array size of jagged array");
+            } while (!int.TryParse(Console.ReadLine(), out arraySize)||arraySize==0);
+            
+            int[][] array = new int[arraySize][];
+            for (int i = 0; i < arraySize; i++)
+            {
+                do
+                {
+                    Console.WriteLine($"Enter length of {i} array");
+                } while (!int.TryParse(Console.ReadLine(), out arrayLineSize) || arrayLineSize == 0);
+                array[i] = new int[arrayLineSize];
             }
 
             Random rnd = new Random();

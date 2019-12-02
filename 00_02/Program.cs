@@ -10,31 +10,30 @@ namespace _00_02
     {
         static void Main(string[] args)
         {
-            int simple_num = int.Parse(Console.ReadLine());
-            Simple simpleNum = new Simple();
-
-            if (simpleNum.GetSimple(simple_num)) { Console.WriteLine(simple_num + " is a simple number"); } else { Console.WriteLine(simple_num + " isn't a simple number"); }
+            int simpleNum = 0;
+            do
+            {
+                Console.WriteLine("Enter N");
+            } while(!int.TryParse(Console.ReadLine(), out simpleNum));
+            if (IsSimple(simpleNum)) { Console.WriteLine($"{simpleNum} is a simple number"); } else { Console.WriteLine($"{simpleNum} isn't a simple number"); }
             Console.ReadKey();
         }
-    }
-
-    public class Simple
-    {
-        public Boolean GetSimple(int simple_number)
+        static Boolean IsSimple(int simpleNumber)
         {
-            if (simple_number == 1 | simple_number == 2 | simple_number == 5) { return true; }
+            if (simpleNumber == 1 | simpleNumber == 2 | simpleNumber == 5) { return true; }
             else
             {
-                if ((simple_number % 10) % 2 == 0 | (simple_number % 10) == 5) { return false; }
+                if ((simpleNumber % 10) % 2 == 0 | (simpleNumber % 10) == 5) { return false; }
                 else
                 {
-                    for (int i = 3; i <= Math.Round(Math.Sqrt(simple_number)); i += 2)
+                    for (int i = 3; i <= Math.Round(Math.Sqrt(simpleNumber)); i += 2)
                     {
-                        if (simple_number % i == 0) { return false; }
+                        if (simpleNumber % i == 0) { return false; }
                     }
                 }
                 return true;
             }
         }
     }
+
 }

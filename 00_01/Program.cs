@@ -10,21 +10,21 @@ namespace _00_01
     {
         static void Main(string[] args)
         {
-            int sequence_num = int.Parse(Console.ReadLine());
-            Sequence currentSequence = new Sequence();
-            currentSequence.GetSequence(sequence_num);
+            int sequenceNum = 0;
+            do
+            {
+                Console.WriteLine("Enter N");
+            } while (!int.TryParse(Console.ReadLine(),out sequenceNum));
+            
+            GetSequence(sequenceNum);
             Console.ReadKey();
         }
-    }
-
-    public class Sequence
-    {
-        public void GetSequence(int sequence_number)
+        static void GetSequence(int sequenceNumber)
         {
             Console.Write(1);
-            if (sequence_number > 1)
+            if (sequenceNumber > 1)
             {
-                for (int i = 2; i <= sequence_number; i++)
+                for (int i = 2; i <= sequenceNumber; i++)
                 {
                     Console.Write(", " + i);
                 }

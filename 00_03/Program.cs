@@ -10,22 +10,20 @@ namespace _00_03
     {
         static void Main(string[] args)
         {
-            int square_num = int.Parse(Console.ReadLine());
-            Square newSquare = new Square();
-            newSquare.GetSquare(square_num);
-
+            int squareNum = 0;
+            do
+            {
+                Console.WriteLine("Enter N");
+            } while (!int.TryParse(Console.ReadLine(), out squareNum)||(squareNum%2==0));
+            GetSquare(squareNum);
             Console.ReadKey();
         }
-    }
-
-    public class Square
-    {
-        public void GetSquare(int square_num)
+        static void GetSquare(int squareNum)
         {
-            int middle = (int)(square_num / 2) + 1;
-            for (int i = 1; i <= square_num; i++)
+            int middle = (squareNum / 2) + 1;
+            for (int i = 1; i <= squareNum; i++)
             {
-                for (int j = 1; j <= square_num; j++)
+                for (int j = 1; j <= squareNum; j++)
                 {
                     if (i == middle && j == middle && i == j) { Console.Write(" "); } else { Console.Write("*"); }
                 }
