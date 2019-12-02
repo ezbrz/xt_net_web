@@ -11,7 +11,7 @@ namespace _01_02
         static void Main(string[] args)
         {
             
-            writeLineN(GetValue(out _, "N"));
+            writeLineN(TakeValue("N"));
             Console.ReadKey();   
         }
         static void writeLineN(int n)
@@ -22,14 +22,14 @@ namespace _01_02
             }
         }
 
-        static int GetValue(out int val, string valName)
+        static int TakeValue(string valName)
         {
+            int val = 0;
             Console.WriteLine($"Please, enter {valName}");
             do
             {
-                
                 int.TryParse(Console.ReadLine(), out val);
-                if (val <= 0) Console.WriteLine("incorrect {0}, try again. {0} must  be > 0", valName);
+                if (val <= 0) Console.WriteLine($"incorrect {valName}, try again. {valName} must  be > 0");
             } while (val <= 0);
             return val;
         }

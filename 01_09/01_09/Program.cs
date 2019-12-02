@@ -16,7 +16,6 @@ namespace _01_09
             Console.Write($"\nSum non-negative elements = {SumNonNegative(arr)}");
             Console.ReadKey();
         }
-
         static void PullArray(int[] arr)
         {
             Random rnd = new Random();
@@ -25,7 +24,6 @@ namespace _01_09
                 arr[i] = rnd.Next(-500, 500);
             }
         }
-
         static void ShowArray(int[] arr)
         {
             foreach (int elem in arr)

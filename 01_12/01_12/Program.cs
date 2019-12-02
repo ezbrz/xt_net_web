@@ -18,7 +18,6 @@ namespace _01_12
 
             Console.ReadKey();
         }
-
         static string DoubleChar(string firstStr, string secondStr)
         {
             StringBuilder primaryStrBuilder = new StringBuilder();

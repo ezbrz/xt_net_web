@@ -10,12 +10,13 @@ namespace _01_03
     {
         static void Main(string[] args)
         {
-            writeLineN(GetValue(out _, "N"));
+            showTriangle(TakeValue("N"));
             Console.ReadKey();
         }
 
-        static int GetValue(out int val, string valName)
+        static int TakeValue(string valName)
         {
+            int val = 0;
             Console.WriteLine($"Please, enter {valName}");
             do
             {
@@ -25,11 +26,11 @@ namespace _01_03
             return val;
         }
 
-        static void writeLineN(int n)
+        static void showTriangle(int n)
         {
             for (int i = 1; i <= n; i++)
             {
-                Console.WriteLine(new string(' ', n-i)+new string('*',i*2-1));
+                Console.WriteLine($"{new string(' ', n-i)}{new string('*', i * 2 - 1)}");
             }
         }
     }

@@ -11,14 +11,11 @@ namespace _01_06
         static void Main(string[] args)
         {
             FontAdjustment MyFont = new FontAdjustment();
-            int fontParam;
+            int fontParam=0;
             do
             {
-                
-                Console.WriteLine($"Параметры надписи:{MyFont}");
-                getEnum();
-                GetValue(out fontParam);
-
+                ShowEnum(MyFont);
+                fontParam = TakeValue();
                 switch (fontParam)
                 {
                     case 1:
@@ -43,15 +40,17 @@ namespace _01_06
             underline = 4
         }
 
-        static void getEnum()
+        static void ShowEnum(FontAdjustment myFont)
         {
+            Console.WriteLine($"Параметры надписи:{myFont}");
             for (int i = 1; i < Enum.GetValues(typeof(FontAdjustment)).Length; i++)
             {
                 Console.WriteLine($"{i,10}: {Enum.GetValues(typeof(FontAdjustment)).GetValue(i)}");
             }
         }
-        static int GetValue(out int val)
+        static int TakeValue()
         {
+            int val = 0;
             do
             {
                 int.TryParse(Console.ReadLine(), out val);
@@ -59,8 +58,5 @@ namespace _01_06
             } while (val <= 0|| val > 4);
             return val;
         }
-
-
-
     }
 }

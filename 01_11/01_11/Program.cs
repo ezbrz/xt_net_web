@@ -13,11 +13,8 @@ namespace _01_11
             Console.WriteLine("Enter new string:");
             string str = Console.ReadLine();
             Console.WriteLine(MidString(str));
-
-
             Console.ReadKey();
         }
-
         static string MidString(string str)
         {
             float wordLength = 0;

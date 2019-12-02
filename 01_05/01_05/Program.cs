@@ -13,17 +13,15 @@ namespace _01_05
             int sum=0;
             for (int i=1; i<=1000; i++)
             {
-                if (isValid(i)) sum += i;
+                if (IsValid(i)) sum += i;
             }
             Console.WriteLine(sum);
             Console.ReadKey();
         }
 
-        static bool isValid(int n)
+        static bool IsValid(int n)
         {
             if (n % 3==0 || n % 5==0) return true; else return false;
         }
-
-
     }
 }

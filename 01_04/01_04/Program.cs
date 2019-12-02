@@ -10,12 +10,13 @@ namespace _01_04
     {
         static void Main(string[] args)
         {
-            writeLineN(GetValue(out _, "N"));
+            ShowTree(TakeValue("N"));
             Console.ReadKey();
         }
 
-        static int GetValue(out int val, string valName)
+        static int TakeValue(string valName)
         {
+            int val = 0;
             Console.WriteLine($"Please, enter {valName}");
             do
             {
@@ -25,17 +26,15 @@ namespace _01_04
             return val;
         }
 
-        static void writeLineN(int n)
+        static void ShowTree(int n)
         {
             for (int i = 1; i <= n; i++)
             {
                 for (int j = 1; j <= i; j++)
                 {
-                    Console.WriteLine(new string(' ', n - j) + new string('*', j * 2 - 1));
-
+                    Console.WriteLine($"{new string(' ', n - j)}{new string('*', j * 2 - 1)}");
                 }
             }
         }
-
     }
 }

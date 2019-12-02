@@ -11,12 +11,13 @@ namespace _01_01
         static void Main(string[] args)
         {
             
-            Console.WriteLine($"Square = {GetValue(out _, "A") * GetValue(out _, "B")}");
+            Console.WriteLine($"Square = {TakeValue("A") * TakeValue("B")}");
             Console.ReadKey();
         }
 
-        static int GetValue(out int val, string valName)
+        static int TakeValue(string valName)
         {
+            int val = 0;
             Console.WriteLine($"Please, enter {valName}");
             do
             {
