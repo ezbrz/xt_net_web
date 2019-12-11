@@ -61,7 +61,9 @@ namespace _03_03
             MyArray.Add(1000);
 
             MyArray[3] = 8000;
-            MyArray[-3] = 3000;
+            MyArray[-3] = 2000;
+            //MyArray[5] = 8000;
+            //MyArray[-5] = 3000;
 
             Console.WriteLine(MyArray.Length);
             Console.WriteLine(MyArray.Capacity);
