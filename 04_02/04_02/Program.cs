@@ -4,20 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace _04_01
+namespace _04_02
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
-
-            //SortUnit.CustomSort();
-            //SortUnit.CustomSortDemo();
-            SortUnit.SortArrayInThread();
-            Console.ReadKey();
         }
-
     }
 }
