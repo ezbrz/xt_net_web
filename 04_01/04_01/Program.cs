@@ -13,8 +13,9 @@ namespace _04_01
         static void Main(string[] args)
         {
 
-            //SortUnit.CustomSort();
-            //SortUnit.CustomSortDemo();
+            //SortDemo.CustomSortIntDemo();
+            //SortDemo.CustomSortDoubleDemo();
+            //SortDemo.CustomSortStringDemo();
             SortUnit.SortArrayInThread();
             Console.ReadKey();
         }

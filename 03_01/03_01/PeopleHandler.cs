@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _03_01
 {
-    class PeopleHandler
+    static class PeopleHandler
     {
         public static void ShowPeople(List<People> list)
         {
