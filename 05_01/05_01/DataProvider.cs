@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -33,20 +30,20 @@ namespace _05_01
                 }
             }
         }
-        static public void Serialized()
+        static public void Serialized(string path)
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream(@"D:\Test\log.dat", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(path+"log.dat", FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, Watcher.BackupList);
             }
         }
-        static public void DeSerialized()
+        static public void DeSerialized(string path)
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream(@"D:\Test\log.dat", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(path+"log.dat", FileMode.OpenOrCreate))
             {
                 Watcher.BackupList = (Dictionary<DateTime, FileChangeInfo>)formatter.Deserialize(fs);
 
@@ -72,17 +69,15 @@ namespace _05_01
             foreach (string subdirectory in subdirectoryEntries)
                 ProcessDirectory(subdirectory);
 
-            Serialized();
+            Serialized(path);
         }
-
-
         public static void ProcessFile(string path)
         {
             string content;
             string fileName;
             content = GetFileContent(path);
             fileName = Path.GetFileName(path);
-            FileChangeInfo FileLog = new FileChangeInfo(fileName, path, "", DateTime.Now, WatcherChangeTypes.Created, content);
+            FileChangeInfo FileLog = new FileChangeInfo(fileName, path, "", DateTime.Now, WatcherChangeTypes.Created, content, content);
             Watcher.BackupList.Add(DateTime.Now, FileLog);
         }
     }

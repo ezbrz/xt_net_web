@@ -15,7 +15,8 @@ namespace _05_01
         public DateTime DateTimeChange { get; set; }
         public WatcherChangeTypes ChangeFileMode { get; set; }
         public string Content { get; set; }
-        public FileChangeInfo(string name, string fullPath, string oldFullPath, DateTime dtChange, WatcherChangeTypes cfMode, string content)
+        public string OldContent { get; set; }
+        public FileChangeInfo(string name, string fullPath, string oldFullPath, DateTime dtChange, WatcherChangeTypes cfMode, string content, string oldContent)
         {
             Name = name;
             FullPath = fullPath;
@@ -23,6 +24,7 @@ namespace _05_01
             DateTimeChange = dtChange;
             ChangeFileMode = cfMode;
             Content = content;
+            OldContent = oldContent;
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 
 namespace _05_01
@@ -27,7 +23,7 @@ namespace _05_01
                 if (DateTime.TryParse(param, out result))
                 {
                     th.Abort();
-                    Restore.RestoreFiles(result);
+                    Restore.RestoreFiles(result, path);
                 }
 
 
