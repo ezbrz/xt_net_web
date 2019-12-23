@@ -28,7 +28,7 @@ namespace _05_01
                 }
                 catch (IOException ex)
                 {
-                    if (numberOfTries++ == 10)
+                    if (numberOfTries++ == 5)
                         throw new IOException(ex.Message, ex.InnerException);
                 }
             }
@@ -40,8 +40,6 @@ namespace _05_01
             using (FileStream fs = new FileStream(@"D:\Test\log.dat", FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, Watcher.BackupList);
-
-                Console.WriteLine("Объект сериализован");
             }
         }
         static public void DeSerialized()
@@ -57,6 +55,35 @@ namespace _05_01
                     Console.WriteLine($"Date/Time: {item.Key} --- Changed file: {item.Value.Name} --- Change mode: {item.Value.ChangeFileMode}");
                 }
             }
+        }
+        public static void FirstStart(string path)
+        {
+            ProcessDirectory(path);
+        }
+        public static void ProcessDirectory(string path)
+        {
+            // Process the list of files found in the directory.
+            string[] fileEntries = Directory.GetFiles(path, "*.txt");
+            foreach (string fileName in fileEntries)
+                ProcessFile(fileName);
+
+            // Recurse into subdirectories of this directory.
+            string[] subdirectoryEntries = Directory.GetDirectories(path);
+            foreach (string subdirectory in subdirectoryEntries)
+                ProcessDirectory(subdirectory);
+
+            Serialized();
+        }
+
+
+        public static void ProcessFile(string path)
+        {
+            string content;
+            string fileName;
+            content = GetFileContent(path);
+            fileName = Path.GetFileName(path);
+            FileChangeInfo FileLog = new FileChangeInfo(fileName, path, "", DateTime.Now, WatcherChangeTypes.Created, content);
+            Watcher.BackupList.Add(DateTime.Now, FileLog);
         }
     }
 }

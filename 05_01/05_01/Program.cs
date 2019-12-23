@@ -18,20 +18,21 @@ namespace _05_01
             th.Start(path);
 
 
-
+            DateTime result;
+            string param;
             do
             {
+                Console.WriteLine($"Choose some data to restore your files. Format will be the same like {DateTime.Now.ToString()}");
+                param = Console.ReadLine();
+                if (DateTime.TryParse(param, out result))
+                {
+                    th.Abort();
+                    Restore.RestoreFiles(result);
+                }
 
-                DataProvider.DeSerialized();
-                Thread.Sleep(2000);
-                Console.WriteLine($"---");
-                //foreach (var item in Watcher.BackupList)
-                //{
 
-                //    Console.WriteLine($"{item.Key}, {item.Value.FullPath}, {item.Value.Content}");
-                //}
-            } while (true);
-
+            } while (param != "q");
+            th.Abort();
         }
     }
 }

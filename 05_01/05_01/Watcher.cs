@@ -25,13 +25,17 @@ namespace _05_01
                 Console.WriteLine("Use correct directory");
                 return;
             }
-
             // Create a new FileSystemWatcher and set its properties.
             using (FileSystemWatcher watcher = new FileSystemWatcher())
             {
                 watcher.Path = path;
-                watcher.IncludeSubdirectories = true;
 
+                watcher.IncludeSubdirectories = true;
+                if (!File.Exists(path + "log.dat")||File.ReadAllText(path+"log.dat")=="")
+                {
+                    DataProvider.FirstStart(path);
+                }
+                DataProvider.DeSerialized();
                 watcher.NotifyFilter = NotifyFilters.LastAccess
                                      | NotifyFilters.LastWrite
                                      | NotifyFilters.FileName
@@ -46,13 +50,12 @@ namespace _05_01
 
                 watcher.EnableRaisingEvents = true;
 
-
                 while (true) ;
             }
         }
 
         // Define the event handlers.
-        private static void OnChanged(object source, FileSystemEventArgs e) 
+        private static void OnChanged(object source, FileSystemEventArgs e)
         {
             string content;
             Console.WriteLine($"File: {e.FullPath} {e.ChangeType}");
@@ -64,19 +67,23 @@ namespace _05_01
             {
                 content = "";
             }
-            FileChangeInfo FileLog = new FileChangeInfo(e.Name, e.FullPath, DateTime.Now, e.ChangeType, content);
+            FileChangeInfo FileLog = new FileChangeInfo(e.Name, e.FullPath, "", DateTime.Now, e.ChangeType, content);
             BackupList.Add(DateTime.Now, FileLog);
             DataProvider.Serialized();
+            DataProvider.DeSerialized();
         }
 
+        
         private static void OnRenamed(object source, RenamedEventArgs e)
         {
             Console.WriteLine($"File: {e.OldFullPath} renamed to {e.FullPath}");
-            FileChangeInfo FileLog = new FileChangeInfo(e.Name, e.FullPath, DateTime.Now, e.ChangeType, "");
+            FileChangeInfo FileLog = new FileChangeInfo(e.Name, e.FullPath, e.OldFullPath, DateTime.Now, e.ChangeType, "");
             BackupList.Add(DateTime.Now, FileLog);
             DataProvider.Serialized();
+            DataProvider.DeSerialized();
         }
             
 
     }
+
 }
