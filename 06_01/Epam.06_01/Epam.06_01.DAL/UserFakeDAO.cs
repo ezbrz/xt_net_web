@@ -8,23 +8,35 @@ using System.Threading.Tasks;
 
 namespace Epam._06_01.DAL
 {
-    public class UserDAO : IUserDAO
+    public class UserFakeDAO : IUserDAO
     {
         private static readonly Dictionary<uint, User> _users = new Dictionary<uint, User>();
 
-        public User Add(User user)
+        public bool Add(User user)
         {
             var lastId = _users.Keys.Count > 0
                 ? _users.Keys.Max()
                 : 0;
             user.Id = lastId + 1;
             _users.Add(user.Id, user);
-            return user;
+            return true;
         }
         public User GetById(uint id)
         {
             _users.TryGetValue(id, out var user);
             return user;
+        }
+        public bool DeleteById(uint id)
+        {
+            try
+            {
+                _users.Remove(id);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
         public IEnumerable<User> GetAll()
         {

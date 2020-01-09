@@ -17,13 +17,17 @@ namespace Epam._06_01.BLL
         {
             _userDAO = userDAO;
         }
-        public User Add(User user)
+        public bool Add(User user)
         {
             return _userDAO.Add(user);
         }
         public User GetById(uint id)
         {
             return _userDAO.GetById(id);
+        }
+        public bool DeleteById(uint id)
+        {
+            return _userDAO.DeleteById(id);
         }
         public IEnumerable<User> GetAll()
         {

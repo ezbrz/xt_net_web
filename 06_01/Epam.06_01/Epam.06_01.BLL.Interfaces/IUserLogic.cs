@@ -9,8 +9,9 @@ namespace Epam._06_01.BLL.Interfaces
 {
     public interface IUserLogic
     {
-        User Add(User user);
+        bool Add(User user);
         User GetById(uint id);
+        bool DeleteById(uint id);
         IEnumerable<User> GetAll();
     }
 }

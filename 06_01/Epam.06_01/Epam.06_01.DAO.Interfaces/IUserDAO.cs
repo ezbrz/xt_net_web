@@ -9,8 +9,9 @@ namespace Epam._06_01.DAO.Interfaces
 {
     public interface IUserDAO
     {
-        User Add(User user);
+        bool Add(User user);
         User GetById(uint id);
+        bool DeleteById(uint id);
         IEnumerable<User> GetAll();
     }
 }
