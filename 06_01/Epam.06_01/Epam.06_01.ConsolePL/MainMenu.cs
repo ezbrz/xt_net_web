@@ -52,6 +52,14 @@ namespace Epam._06_01.ConsolePL
                         Console.WriteLine("Enter user id");
                         uint.TryParse(Console.ReadLine(), out _userId);
                         Console.WriteLine(userLogic.GetById(_userId));
+                        if (userLogic.GetUserAwards(_userId).Any())
+                        {
+                            Console.WriteLine("Awards:");
+                            foreach (uint item in userLogic.GetUserAwards(_userId))
+                            {
+                                Console.WriteLine(awardLogic.GetById(item));
+                            }
+                        }
                         Console.ReadKey();
                         break;
                     case "Award":

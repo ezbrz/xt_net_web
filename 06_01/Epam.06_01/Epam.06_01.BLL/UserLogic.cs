@@ -33,5 +33,9 @@ namespace Epam._06_01.BLL
         {
             return _userDAO.GetAll();
         }
+        public List<uint> GetUserAwards(uint id)
+        {
+            return _userDAO.GetUserAwards(id);
+        }
     }
 }

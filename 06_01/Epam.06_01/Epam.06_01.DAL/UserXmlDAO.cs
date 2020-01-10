@@ -99,7 +99,13 @@ namespace Epam._06_01.DAL
                         DateTime.TryParse(childnode.InnerText, out DateTime birthday);
                         user.DateOfBirth = birthday;
                     }
-                        
+                    if (childnode.Name == "award")
+                    {
+                        foreach (XmlNode item in childnode.ChildNodes)
+                        {
+                            if (uint.TryParse(item.InnerText, out uint awardId)) { user.Awards.Add(awardId); }
+                        }
+                    }
                 }
                 _users.Add(user.Id, user);
             }
@@ -114,6 +120,10 @@ namespace Epam._06_01.DAL
                 return GetAll().FirstOrDefault(s => s.Id == id);
             }
                 return _users.FirstOrDefault(s => s.Key == id).Value;
+        }
+        public List<uint> GetUserAwards(uint id)
+        {
+            return GetAll().FirstOrDefault(s => s.Id == id).Awards;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Epam._06_01.Entities
 
         public uint Id { get; set; }
         public string Name { get; set; }
+        public List<uint> Awards { get; } = new List<uint>();
         public DateTime DateOfBirth 
         {
             get => _dateOfBirth;

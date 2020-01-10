@@ -13,5 +13,6 @@ namespace Epam._06_01.BLL.Interfaces
         User GetById(uint id);
         bool DeleteById(uint id);
         IEnumerable<User> GetAll();
+        List<uint> GetUserAwards(uint id);
     }
 }

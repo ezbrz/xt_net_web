@@ -42,5 +42,10 @@ namespace Epam._06_01.DAL
         {
             return _users.Values;
         }
+
+        public List<uint> GetUserAwards(uint id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
