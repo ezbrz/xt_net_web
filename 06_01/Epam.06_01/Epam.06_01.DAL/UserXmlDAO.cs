@@ -1,5 +1,6 @@
 ﻿using Epam._06_01.DAO.Interfaces;
 using Epam._06_01.Entities;
+using Epam._06_01.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,33 +15,7 @@ namespace Epam._06_01.DAL
     {
         private static Dictionary<uint, User> _users = new Dictionary<uint, User>();
         private static bool _edited = true;
-        private static XmlDocument XmlConnect()
-        {
-            try 
-            {
-                XmlDocument xDoc = new XmlDocument();
-                xDoc.Load("D:/Data/Data.xml");
-                return xDoc;
-            }
-            catch
-            {
-                throw new Exception("Something wrong with file");
-            }
-            
-        }
-        private static bool XmlSave(XmlDocument xDoc)
-        {
-            try
-            {
-                xDoc.Save("D:/Data/Data.xml");
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-            
-        }
+        static readonly string path = DataMode.GetPath("UserFile");
 
         public bool Add(User user)
         {
@@ -52,7 +27,7 @@ namespace Epam._06_01.DAL
                 : 0;
                 user.Id = lastId + 1;
                 _users.Add(user.Id, user);
-                var root = XmlConnect();
+                var root = XMLProvider.XmlConnect(path);
                 XmlNode xRoot = root.DocumentElement;
                 XmlNode newRecord = root.CreateElement("user");
                 XmlAttribute recordAttribute = root.CreateAttribute("id");
@@ -70,7 +45,7 @@ namespace Epam._06_01.DAL
                 newRecord.AppendChild(recordBirthday);
                 newRecord.Attributes.Append(recordAttribute);
                 xRoot.AppendChild(newRecord);
-                XmlSave(root);
+                XMLProvider.XmlSave(root, path);
                 _edited = false;
                 return true;
             }
@@ -84,12 +59,12 @@ namespace Epam._06_01.DAL
         {
             try
             {
-                var root = XmlConnect();
+                var root = XMLProvider.XmlConnect(path);
                 XmlNode xRoot = root.DocumentElement;
                 XmlNode node = xRoot.SelectSingleNode(string.Format("user[@id = '{0}']", id));
                 XmlNode outer = node.ParentNode;
                 outer.RemoveChild(node);
-                if (!XmlSave(root)) return false;
+                if (!XMLProvider.XmlSave(root, path)) return false;
                 _edited = true;
                 return true;
             }
@@ -103,7 +78,7 @@ namespace Epam._06_01.DAL
         public IEnumerable<User> GetAll()
         {
             _users.Clear();
-            var root = XmlConnect();
+            var root = XMLProvider.XmlConnect(path);
             XmlNode xRoot = root.DocumentElement;
             foreach (XmlElement xnode in xRoot)
             {

@@ -14,7 +14,7 @@ namespace Epam._06_01.ConsolePL
     {
         static void Main(string[] args)
         {
-            StartPage.Run(DependencyResolver.UserLogic);
+            MainMenu.Run(DependencyResolver.UserLogic, DependencyResolver.AwardLogic);
         }
     }
 }

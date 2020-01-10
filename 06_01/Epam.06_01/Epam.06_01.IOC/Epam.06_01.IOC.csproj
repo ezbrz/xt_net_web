@@ -66,6 +66,10 @@
       <Project>{d24130b4-2c6c-4719-b888-938f50ad016d}</Project>
       <Name>Epam.06_01.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Epam.06_01.Handlers\Epam.06_01.Handlers.csproj">
+      <Project>{885672EE-AF87-4653-8B94-30908E121A7E}</Project>
+      <Name>Epam.06_01.Handlers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -61,7 +61,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartPage.cs" />
+    <Compile Include="MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -78,6 +78,10 @@
     <ProjectReference Include="..\Epam.06_01.Entities\Epam.06_01.Entities.csproj">
       <Project>{d24130b4-2c6c-4719-b888-938f50ad016d}</Project>
       <Name>Epam.06_01.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.06_01.Handlers\Epam.06_01.Handlers.csproj">
+      <Project>{885672EE-AF87-4653-8B94-30908E121A7E}</Project>
+      <Name>Epam.06_01.Handlers</Name>
     </ProjectReference>
     <ProjectReference Include="..\Epam.06_01.IOC\Epam.06_01.IOC.csproj">
       <Project>{de164cc5-ccf2-43eb-b762-0edac4d7af0e}</Project>
