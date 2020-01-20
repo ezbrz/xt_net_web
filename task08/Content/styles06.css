@@ -1,0 +1,19 @@
+/*task 08_06*/
+body{
+    background-color: #333;
+    padding: 10px;
+}
+div.eq{
+    background: repeating-linear-gradient(to bottom, transparent, transparent 20px, #333 20px, #333 23px),
+    linear-gradient(to bottom, #ffdd66, #ff8800);
+    width:50px;
+    display:inline-block;
+    border-radius: 3px 3px 0 0;
+    vertical-align: bottom;
+}
+.eq1 { height: 115px; }
+.eq2 { height: 46px; }
+.eq3 { height: 184px; }
+.eq4 { height: 230px; }
+.eq5 { height: 115px; }
+.eq6 { height: 69px; }

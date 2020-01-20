@@ -1,0 +1,61 @@
+/*task 08_03*/
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+.dropdown > a{
+    padding: 15px;
+    position: relative;
+    display: inline-block;
+    z-index: 3;
+}
+
+.dropdown:hover{
+    background-color: #fff;
+    border-radius: 7px 7px 0 0;
+    box-shadow: 0 0 9px 3px #cccccc;
+    z-index:1;
+}
+.dropdown:hover > a{
+    text-decoration: none;
+    color:#000;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0 0 9px 3px #cccccc;
+    padding:3px;
+    z-index:0;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content > a{
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+.dropdown-content > a:hover{
+    background-color: #37abff;
+    color: #fff;
+}
+
+.dropdown > a::after 
+{
+    content: "";
+    display: none;
+    position: absolute;
+    top:0px; bottom: 0px;
+    left: 0px; right: 0px;
+    z-index:-1;
+}
+.dropdown:hover > a::after {
+    position: absolute;
+    display: block;
+    border-radius: 7px 7px 0 0;
+    background-color: #fff;
+}

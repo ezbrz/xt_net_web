@@ -1,0 +1,32 @@
+/*task 08_04*/
+body{
+    background-color: #333333;
+}
+.pointer{
+    background-color: #88b7d5;
+    position: relative;
+    margin-top: 60px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    border: 2px solid #c2e1f5;
+}
+.pointer::before{
+    content:"";
+    background-color: #88b7d5;
+    box-sizing: border-box;
+    min-width:40px;
+    min-height:40px;
+    border:2px solid #c2e1f5;
+    border-right:none;
+    border-bottom: none;
+    position: absolute;
+    left:50%;
+    top:0%;
+    transform: rotate(45deg);
+    margin-left:-20px;
+    margin-top:-22px;
+    z-index:1;
+}

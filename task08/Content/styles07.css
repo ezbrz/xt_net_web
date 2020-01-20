@@ -1,0 +1,19 @@
+/*task 08_07*/
+body{
+    background-color: #fff;
+    padding: 10px;
+}
+.head{
+    background: #008B66;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: -5px;
+    font-size: 14px;
+}
+.margintext{
+    background: #dfe6e1;
+    margin-left: 25px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-right: none;
+}
