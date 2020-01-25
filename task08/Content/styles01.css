@@ -1,19 +1,16 @@
 /*task 08_01*/
-div.menu{
-    box-sizing: content-box;
+ul.menu{
+    list-style: none;
+    margin: auto;
+    padding: 5px;
     border: 1px solid #000;
     border-radius: 15px;
     box-shadow: 5px 5px #880000;
     width: 200px;
     background-color: #f9e497;
-}
-div.menu > ul{
-    list-style: none;
-    margin: 0px;
-    padding: 5px;
-}
-div.menu > ul > li{
-    margin: 5px;
     font-size: 11pt;
     color: #880000;
+}
+.menu > li{
+    margin: 5px;
 }
