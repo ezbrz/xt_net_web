@@ -1,46 +1,290 @@
-/*task 08_09*/
+/*task 08_10*/
 body{
-    background-color: #fff;
-    padding: 10px;
+    background-color: #edeef0;
+    padding: 0;
+    font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,"Noto Sans Armenian","Noto Sans Bengali","Noto Sans Cherokee","Noto Sans Devanagari","Noto Sans Ethiopic","Noto Sans Georgian","Noto Sans Hebrew","Noto Sans Kannada","Noto Sans Khmer","Noto Sans Lao","Noto Sans Osmanya","Noto Sans Tamil","Noto Sans Telugu","Noto Sans Thai",sans-serif;
+    font-size:13px;
+}
+a{
+    color: #2a5885;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+header{
+    position:fixed;
+    height: 42px;
+    width: 100%;
+    left:0;
+    top:0;
+    font-size: 13px;
+    background-color: #4a76a8;
+}
+.page_header{
+    width: 960px;
+    height: 42px;
+    margin: auto;
+    padding: 0 15px;
+    background-color: #4a76a8;
+}
+.page_header_logo{
+    width:34px;
+    height:19px;
+    position: absolute;
+    top:11px;
+    padding-left:0px;
+    background-image: url(../Content/vkpage/ic_head_logo.svg);
+}
+.logo_link{
+    display: block;
+    width: 100%;
+    height: 42px;
+    width:165px;
+}
+.page_layout{
+    width: 960px;
+    margin:42px auto;
+}
+.side_bar{
+    width:149px;
+    float:left;
+}
+.side_bar_inner{
+    padding: 15px 0 10px;
 }
 nav{
-    width: 390px;
-    margin: auto;
+    padding:0;
 }
-ul{
+nav > ol{
     list-style: none;
-    display: flex;
+    font-weight: 400;
+    padding: 0;
+    margin:0;
+    font-size:13px;
 }
-li{
-    width: 100px;
-    background: linear-gradient(to bottom, #DDDDDD, #BFBFBF);
-    text-align: center;
-    position: relative;
+nav > ol > li{
+    height: 28px;
+    display:list-item;
 }
-li a{
-    display: block;
+nav > ol > li > a{
+    margin-left: -8px;;
+    display:block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #2a5885;
     text-decoration: none;
-    padding: 5px 0;
+    height: 28px;
+    height: 100%;
+}
+nav > ol > li :hover{
+    background-color: #e1e5eb;
+    text-decoration: none;
+}
+.nav_container{
+    vertical-align: middle;
+    height:28px;
+    display: table-cell;
+}
+.listnav{
+    width: 35px;
+    height: 25px;
+    opacity: 0.75;
+    background: url(../Content/vkpage/icons.svg) no-repeat 7px -441px;
+    display: block;
+    float:left;
+}
+.ln_1{
+    background-position: 7px 6px;
+}
+.ln_2{
+    background-position: 7px -917px;
+}
+.ln_3{
+    background-position: 7px -21px;
+}
+.ln_4{
+    background-position: 7px -77px;
+}
+.ln_5{
+    background-position: 7px -105px;
+}
+.ln_6{
+    background-position: 7px -133px;
+}
+.ln_7{
+    background-position: 7px -161px;
+}
+.ln_8{
+    background-position: 7px -189px;
+}
+.ln_9{
+    background-position: 7px -217px;
+}
+.ln_10{
+    background-position: 7px -1023px;
+}
+.ln_11{
+    background-position: 7px -944px;
+}
+.ln_12{
+    background-position: 7px -301px;
+}
+.ln_13{
+    background-position: 7px -273px;
+}
+.more_div {
+    margin-top: 9px;
+    margin-left: 27px;
+    margin-right: 6px;
+    padding-top: 9px;
+    border-top: 1px solid #dfe2e8;
+}
+.md_full{
+    margin:9px 0 0 0;
+}
+.left_menu_powered {
+    line-height: 19px;
+    padding: 14px 0 4px;
+    font-size: 12px;
+    text-align: left;
+    color: #939699;
+}
+.left_menu_powered > a{
+    padding-right: 10px;
+    color: #939699;
+    text-decoration: none;
+}
+.left_menu_powered > a:hover{
+    text-decoration: underline;
+}
+
+.content_body{
+    position: relative;
+    margin-left:149px;
+    width:811px;
+}
+
+.right_side_bar{
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    border-radius: 4px;
+    background-color: #ffffff;
+    width:230px;
+    padding: 6px 0;
+    margin-top:15px;
+    position:absolute;
+    right:0px;
+}
+.right_side_bar a{
+    display:block;
+    font-size: 13px;
+    font-weight: 400;
+    padding-left: 18px;
+    color: #2a5885;
+    text-decoration: none;
+    height: 32px;
+    height: 100%;
+}
+.right_side_bar a:hover{
+    background-color: #f0f2f5;
+}
+.right_side_bar a.rb_active{
+    padding-left: 16px;
+    background-color: #f0f2f5;
+    border-left: 2px solid #5181b8;
+    color: #000000;
+    font-weight: 600;
+}
+.rb_container{
+    height:32px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.center_wrapper{
+    margin-right:245px;
+    margin-left:15px;
+}
+.center_wide_column{
+    padding-top:15px;
+    width: 100%;
+}
+.page_block{
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+}
+h2{
+    margin:0;
+    font-family: -apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,"Noto Sans Armenian","Noto Sans Bengali","Noto Sans Cherokee","Noto Sans Devanagari","Noto Sans Ethiopic","Noto Sans Georgian","Noto Sans Hebrew","Noto Sans Kannada","Noto Sans Khmer","Noto Sans Lao","Noto Sans Osmanya","Noto Sans Tamil","Noto Sans Telugu","Noto Sans Thai",sans-serif;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+.h2_content{
+    display: block;
+    background: #fafbfc;
+    padding: 0 20px;
+    height: 54px;
+    line-height: 54px;
+    border-bottom: 1px solid #e7e8ec;
+    border-radius: 4px 4px 0 0;
+    font-weight: 500;
+    font-size: 16px;
     color: #000;
 }
-li:not(:last-child)::after{
-    content: "";
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    top: -1px;
-    right: -6px;
-    border-bottom: 6px solid white;
-    border-right: 6px solid white;
-    box-sizing: border-box;
-    transform: rotate(-60deg) skew(-30deg);
-    z-index: 1;
+.h2_footer{
+    display: block;
+    background: #fafbfc;
+    padding: 0 20px;
+    height: 54px;
+    line-height: 54px;
+    border-top: 1px solid #e7e8ec;
+    border-radius: 0 0 4px 4px;
+    font-size: 13px;
+    color: #000;
+    text-align: center;
 }
-  
-li:hover{
-    background: linear-gradient(180deg, #AADD77, #66CC22);
+.h2_footer a{
+    color: #2a5885;
+    text-decoration: none;
 }
-  
-li:hover a{
-    color: white;
+.h2_footer a:hover{
+    text-decoration: underline;
+}
+.setting_panel{
+    background: #ffffff;
+    padding:0 20px;
+}
+.setting_line{
+    padding: 15px 0 14px;
+    border-bottom: 1px solid #e7e8ec;
+}
+.setting_line:last-child{
+    border-bottom: none;
+}
+.setting_label{
+    color: #656565;
+    width: 145px;
+    padding: 6px 10px 6px 0;
+    float: left;
+    line-height: 16px;
+}
+.setting_line a{
+    float: right;
+    padding: 6px 0 0;
+}
+.setting_label_text{
+    padding-top: 6px;
+    margin: 0 0 8px 155px;
+}
+span.grey{
+    color: #656565;
+}
+.setting_menu{
+    padding-top: 0px;
+    margin: 0 0 22px 155px;
+}
+.setting_menu a{
+    padding: 6px 0 0;
+    float: left;
 }
