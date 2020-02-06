@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>task 09_03</title>
+        <link rel="stylesheet" href="style03.css">
+    </head>
+    <body>
+        <div class='selector'>
+            <div class='left column'>
+                <header>Available</header>
+                <select multiple id='available'>
+            
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                    <option>Option 4</option>
+                    <option>Option 5</option>
+                </select>
+            </div>
+            <div class='manage'>
+                <button onclick="moveSelected(document.querySelector('#available'),document.querySelector('#selected'))">></button>
+                <button onclick="moveAll(document.querySelector('#available'),document.querySelector('#selected'))">>></button>
+                <button onclick="moveSelected(document.querySelector('#selected'),document.querySelector('#available'))"><</button>
+                <button onclick="moveAll(document.querySelector('#selected'),document.querySelector('#available'))"><<</button>
+            </div>
+            <div class='right column'>
+                <header>Selected</header>
+                <select multiple id='selected'>
+            
+                    <option>Option 5</option>
+                    <option>Option 6</option>
+                </select>
+            </div>
+        </div>
+        <div class='alert'></div>
+        
+
+        <script src='task09_03.js'></script>
+    </body>
+</html>

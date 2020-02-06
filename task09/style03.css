@@ -1,0 +1,28 @@
+div{
+    margin:auto;
+}
+select{
+    height:140px;
+    width:80px;
+    overflow: hidden;
+}
+header{
+    text-align: center;
+}
+.column{
+    width:80px;
+    display:inline-block;
+}
+.selector{
+    width:200px;
+}
+.manage{
+    display:inline-block;
+    width: 30px;
+}
+button{
+    width:30px;
+}
+.alert{
+    color: #ff4444;
+}
