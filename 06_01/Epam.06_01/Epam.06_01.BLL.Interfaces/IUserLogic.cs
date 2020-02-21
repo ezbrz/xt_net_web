@@ -14,5 +14,8 @@ namespace Epam._06_01.BLL.Interfaces
         bool DeleteById(uint id);
         IEnumerable<User> GetAll();
         List<uint> GetUserAwards(uint id);
+        bool GrantUserAwards(uint idUser, uint idAward);
+        bool DeleteAward(uint idUser, uint idAward);
+        bool EditUser(uint idUser, string newValue, DateTime newBirthday, List<uint> newAwards);
     }
 }

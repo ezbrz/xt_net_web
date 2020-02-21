@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 
 namespace Epam._06_01.Handlers
 {
@@ -39,6 +40,21 @@ namespace Epam._06_01.Handlers
                 {
                     settings[input].Value = "XML";
                 }
+                appSettings.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(appSettings.AppSettings.SectionInformation.Name);
+            }
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("Error writing app settings");
+            }
+        }
+        public static void SwitchLogic(string input, string method)
+        {
+            try
+            {
+                var appSettings = WebConfigurationManager.OpenWebConfiguration("/");
+                var settings = appSettings.AppSettings.Settings;
+                settings[input].Value = method;
                 appSettings.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection(appSettings.AppSettings.SectionInformation.Name);
             }

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+    string PageTitle = "Web application :: Users";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    @RenderPage("~/Pages/_HeaderLayout.cshtml")
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <title>@PageTitle</title>
+</head>
+<body>
+    @RenderPage("~/Pages/_BodyLayout.cshtml")
+    <!--Content section-->
+
+    @RenderPage("~/Pages/_Users.cshtml")
+
+    <!--Content section-->
+    @RenderPage("~/Pages/_ButtonSection.cshtml")
+
+    @RenderPage("~/Pages/_FooterLayout.cshtml")
+    <script src="~/Scripts/app/actions.js"></script>
+    <script src="~/Scripts/app/js.js"></script>
+
+
+</body>
+</html>

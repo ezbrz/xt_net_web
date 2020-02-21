@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+    string PageTitle = "Sign in";
+
+    string name = null, pass = null;
+
+    name = Request["login"];
+    pass = Request["password"];
+
+    if(IsPost && pass == "admin")
+    {
+        FormsAuthentication.SetAuthCookie(name, createPersistentCookie: true);
+        Response.Redirect("/");
+        
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    @RenderPage("~/Pages/_HeaderLayout.cshtml")
+    <title>@PageTitle</title>
+</head>
+<body>
+    @RenderPage("~/Pages/_BodyLayout.cshtml")
+    <!--Content section-->
+    <form action="~/Pages/signIn" method="post" class="form-edit">
+        <div class="form-group row">
+            <label for="login" class="col-sm-2 col-form-label">Login</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="login">
+            </div>
+            <div class="form-edit-alert alert alert-danger col-xs-6">!!!</div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form-edit-alert alert alert-danger col-xs-6">!!!</div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Sign in</button>
+    </form>
+    <a href="/"><div class="btn btn-info">Back to index</div></a>
+    <!--Content section-->
+    @RenderPage("~/Pages/_FooterLayout.cshtml")
+
+</body>
+</html>

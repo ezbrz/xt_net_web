@@ -32,5 +32,9 @@ namespace Epam._06_01.BLL
         {
             return _awardDAO.GetAll();
         }
+        public bool EditById(uint id, string newValue)
+        {
+            return _awardDAO.EditById(id, newValue);
+        }
     }
 }

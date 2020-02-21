@@ -42,5 +42,19 @@ namespace Epam._06_01.DAL
         {
             return _awards.Values;
         }
+
+        public bool EditById(uint id, string newValue)
+        {
+            try 
+            {
+                _awards.Values.FirstOrDefault(x => x.Id == id).Name = newValue;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
     }
 }

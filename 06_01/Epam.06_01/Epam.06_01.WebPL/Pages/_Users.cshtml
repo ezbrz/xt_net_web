@@ -1,0 +1,87 @@
+﻿@using Epam._06_01.BLL.Interfaces;
+@using Epam._06_01.Entities;
+@using Epam._06_01.Handlers;
+@using Epam._06_01.IOC;
+@{
+    Layout = null;
+    IUserLogic userLogic = DependencyResolver.UserLogic;
+    IAwardLogic awardLogic = DependencyResolver.AwardLogic;
+}
+
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Awards
+            </th>
+            <th>
+                Control
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var result = userLogic.GetAll().ToList();}
+        @foreach (var item in result)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td name="userName">
+                    @item.Name
+                </td>
+                <td>
+                    @item.Age
+                </td>
+                <td>
+                    @if (item.Awards.Count > 0)
+                    {
+                     <div class="awards_popup">Awards</div>
+                     <div class="hidden_awards">
+                         <table class="table">
+                             <thead class="thead-dark">
+                                 <tr>
+                                     <th>
+                                         ID
+                                     </th>
+                                     <th>
+                                         Award
+                                     </th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 @foreach (uint elem in userLogic.GetUserAwards(item.Id))
+                                 {
+                                     <tr>
+                                         <td>@awardLogic.GetById(elem).Id</td>
+                                         <td>@awardLogic.GetById(elem).Name</td>
+                                     </tr>
+                                 }
+                             </tbody>
+                         </table>
+                     </div>
+                    }
+                    else
+                    {
+                        <text>No Awards</text>
+                    }
+                </td>
+                <td name="@item.Id">
+                    <div class="action" name="user-action">
+                        <div class="btn btn-info" name="edit">Edit user</div>
+                        <div class="btn btn-danger" name="delete">Delete user</div>
+                    </div>
+                </td>
+                </tr>
+            }
+    </tbody>
+</table>

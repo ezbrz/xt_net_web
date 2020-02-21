@@ -1,0 +1,32 @@
+﻿@using Epam._06_01.BLL.Interfaces;
+@using Epam._06_01.Entities;
+@using Epam._06_01.Handlers;
+@using Epam._06_01.IOC;
+@{
+    IUserLogic userLogic = DependencyResolver.UserLogic;
+    IAwardLogic awardLogic = DependencyResolver.AwardLogic;
+    if (!IsPost)
+    {
+        var attrValue = Request.QueryString["attr"];
+        if (attrValue == "user")
+        {
+            if (uint.TryParse(Request.QueryString["id"], out uint idToDelete))
+            {
+                userLogic.DeleteById(idToDelete);
+                Response.Redirect("~/index");
+            }
+
+        } else if (attrValue == "award")
+        {
+            if (uint.TryParse(Request.QueryString["id"], out uint idToDelete))
+            {
+                foreach(var item in userLogic.GetAll().ToList())
+                {
+                    userLogic.DeleteAward(item.Id, idToDelete);
+                }
+                awardLogic.DeleteById(idToDelete);
+                Response.Redirect("~/awards");
+            }
+        }
+    }
+}

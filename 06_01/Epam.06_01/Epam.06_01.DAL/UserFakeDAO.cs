@@ -45,7 +45,52 @@ namespace Epam._06_01.DAL
 
         public List<uint> GetUserAwards(uint id)
         {
-            throw new NotImplementedException();
+            _users.TryGetValue(id, out var user);
+            return user.Awards;
+        }
+        public bool GrantUserAwards(uint idUser, uint idAward)
+        {
+            try
+            {
+                _users.TryGetValue(idUser, out var user);
+                user.Awards.Add(idAward);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteAward(uint idUser, uint idAward)
+        {
+            try
+            {
+                _users.TryGetValue(idUser, out var user);
+                user.Awards.Remove(idAward);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool EditUser(uint idUser, string newValue, DateTime newBirthday, List<uint> newAwards)
+        {
+            try
+            {
+                _users.TryGetValue(idUser, out var user);
+                user.Name = newValue;
+                user.DateOfBirth = newBirthday;
+                user.Awards.Clear();
+                user.Awards.AddRange(newAwards);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -125,5 +125,83 @@ namespace Epam._06_01.DAL
         {
             return GetAll().FirstOrDefault(s => s.Id == id).Awards;
         }
+
+        public bool GrantUserAwards(uint idUser, uint idAward)
+        {
+            try
+            {
+                var root = XMLProvider.XmlConnect(path);
+                XmlNode xRoot = root.DocumentElement;
+                XmlNode node = xRoot.SelectSingleNode(string.Format("user[@id = '{0}']", idUser));
+                XmlNode outer = node.ParentNode;
+                XmlNode recordAward = root.CreateElement("award");
+                XmlText newAward = root.CreateTextNode(idAward.ToString());
+                recordAward.AppendChild(newAward);
+                node.AppendChild(recordAward);
+                if (!XMLProvider.XmlSave(root, path)) return false;
+                _edited = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteAward(uint idUser, uint idAward)
+        {
+            try
+            {
+                var root = XMLProvider.XmlConnect(path);
+                XmlNode xRoot = root.DocumentElement;
+                XmlNode node = xRoot.SelectSingleNode(string.Format("user[@id = '{0}']", idUser));
+                XmlNode outer = node.ParentNode;
+                XmlNodeList recordAward = node.SelectNodes("award");
+                foreach (XmlElement item in recordAward)
+                {
+                    int.TryParse(item.InnerText, out int res);
+                    if (res == idAward)
+                    {
+                        node.RemoveChild(item);
+                    }
+                }
+                if (!XMLProvider.XmlSave(root, path)) return false;
+                _edited = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool EditUser(uint idUser, string newValue, DateTime newBirthday, List<uint> newAwards)
+        {
+            try
+            {
+                var root = XMLProvider.XmlConnect(path);
+                XmlNode xRoot = root.DocumentElement;
+                XmlNode node = xRoot.SelectSingleNode(string.Format("user[@id = '{0}']", idUser));
+                node.SelectSingleNode("name").InnerText = newValue;
+                node.SelectSingleNode("birthday").InnerText = newBirthday.ToShortDateString();
+                XmlNodeList listNode = node.SelectNodes("award");
+                foreach (XmlNode item in listNode)
+                {
+                    node.RemoveChild(item);
+                }
+
+                if (!XMLProvider.XmlSave(root, path)) return false;
+                foreach (uint item in newAwards)
+                {
+                    GrantUserAwards(idUser, item);
+                }
+                _edited = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

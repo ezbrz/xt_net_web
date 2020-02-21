@@ -1,0 +1,11 @@
+﻿<div class="layout"></div>
+<div class="header">
+    <div class="container">
+        <div class="header-text"><a href="/">Epam.Task10</a></div>
+        <div class="header-login">@if (User.Identity.Name != "")
+        {<text>(</text>@User.Identity.Name<text>) <a href="~/Pages/signOut">SignOut</a></text>}
+        else
+        {<a href="~/Pages/signIn.cshtml">SignIn</a> }</div>
+    </div>
+</div>
+<div class="container container-main main">

@@ -33,7 +33,7 @@ namespace Epam._06_01.IOC
             }else if (dataReadConfig == "Memory")
             {
                 UserDAO = new UserFakeDAO();
-                AwardDAO = new AwardFakeDAO();
+            AwardDAO = new AwardFakeDAO();
             }
             else
             {

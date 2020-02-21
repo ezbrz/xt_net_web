@@ -98,7 +98,23 @@ namespace Epam._06_01.DAL
             {
                 return false;
             }
-
+        }
+        public bool EditById(uint id, string newValue)
+        {
+            try
+            {
+                var root = XMLProvider.XmlConnect(path);
+                XmlNode xRoot = root.DocumentElement;
+                XmlNode node = xRoot.SelectSingleNode(string.Format("award[@id = '{0}']", id));
+                node.SelectSingleNode("name").InnerText = newValue;
+                if (!XMLProvider.XmlSave(root, path)) return false;
+                _edited = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -37,5 +37,17 @@ namespace Epam._06_01.BLL
         {
             return _userDAO.GetUserAwards(id);
         }
+        public bool GrantUserAwards(uint idUser, uint idAward)
+        {
+                return _userDAO.GrantUserAwards(idUser, idAward); ;
+        }
+        public bool DeleteAward(uint idUser, uint idAward)
+        {     
+                return _userDAO.DeleteAward(idUser, idAward);
+        }
+        public bool EditUser(uint idUser, string newValue, DateTime newBirthday, List<uint> newAwards)
+        {
+                return _userDAO.EditUser(idUser, newValue, newBirthday, newAwards);
+        }
     }
 }
