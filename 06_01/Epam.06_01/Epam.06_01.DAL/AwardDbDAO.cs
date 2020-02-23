@@ -46,8 +46,16 @@ namespace Epam._06_01.DAL
                         Value = award.Id,
                         Direction = ParameterDirection.Output
                     };
+                    var photoParametr = new SqlParameter()
+                    {
+                        DbType = DbType.String,
+                        ParameterName = "@photo",
+                        Value = award.Photo,
+                        Direction = ParameterDirection.Output
+                    };
                     command.Parameters.Add(idParametr);
                     command.Parameters.Add(nameParametr);
+                    command.Parameters.Add(photoParametr);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
@@ -82,7 +90,7 @@ namespace Epam._06_01.DAL
             return true;
         }
 
-        public bool EditById(uint id, string newValue)
+        public bool EditById(uint id, string newValue, byte[] photo)
         {
             using (SqlConnection connection = new SqlConnection(path))
             {
@@ -103,8 +111,16 @@ namespace Epam._06_01.DAL
                     Value = id,
                     Direction = ParameterDirection.Input
                 };
+                var photoParametr = new SqlParameter()
+                {
+                    DbType = DbType.Binary,
+                    ParameterName = "@newPhoto",
+                    Value = photo,
+                    Direction = ParameterDirection.Input
+                };
                 command.Parameters.Add(idParametr);
                 command.Parameters.Add(nameParametr);
+                command.Parameters.Add(photoParametr);
                 connection.Open();
                 command.ExecuteNonQuery();
                 _edited = true;
@@ -129,6 +145,7 @@ namespace Epam._06_01.DAL
                     int newId = (int)reader["id"];
                     newAward.Id = (uint)newId;
                     newAward.Name = reader["name"] as string;
+                    newAward.Photo = reader["image"] as byte[];
                     _awards.Add(newAward.Id, newAward);
                 }
             }

@@ -45,7 +45,6 @@
     <Compile Include="AwardDbDAO.cs" />
     <Compile Include="AwardFakeDAO.cs" />
     <Compile Include="AwardXMLDAO.cs" />
-    <Compile Include="DbProvider.cs" />
     <Compile Include="UserDbDAO.cs" />
     <Compile Include="UserFakeDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -30,28 +30,42 @@
                     Name
                 </th>
                 <th>
+
+                </th>
+                <th>
                     Control
                 </th>
+
             </tr>
         </thead>
         <tbody>
             @{var result = awardLogic.GetAll().ToList();}
             @foreach (var item in result)
             {
-                <tr>
-                    <td>
-                        @item.Id
-                    </td>
-                    <td name="awardName">
-                        @item.Name
-                    </td>
-                    <td name="@item.Id">
-                        <div class="action" name="award-action">
-                            <div class="btn btn-info" name="edit">Edit award</div>
-                            <div class="btn btn-danger" name="delete">Delete award</div>
-                        </div>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td name="awardName">
+                    @item.Name
+                </td>
+                <td>
+                    @{
+                        if (item.Photo != null)
+                        {
+                            <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(item.Photo))">
+                        }
+                    }
+
+                </td>
+                <td name="@item.Id">
+                    <div class="action" name="award-action">
+                        <div class="btn btn-info" name="edit">Edit award</div>
+                        <div class="btn btn-danger" name="delete">Delete award</div>
+                    </div>
+                </td>
+
+            </tr>
             }
         </tbody>
     </table>

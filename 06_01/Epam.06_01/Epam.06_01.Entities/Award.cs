@@ -10,10 +10,12 @@ namespace Epam._06_01.Entities
     {
         public uint Id { get; set; }
         public string Name { get; set; }
+        public byte[] Photo { get; set; }
 
         public override string ToString()
         {
             return $"Id: {Id}, Name: {Name}";
         }
+
     }
 }

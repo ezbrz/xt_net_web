@@ -56,6 +56,9 @@
                                      <th>
                                          Award
                                      </th>
+                                     <th>
+                                         
+                                     </th>
                                  </tr>
                              </thead>
                              <tbody>
@@ -64,6 +67,15 @@
                                      <tr>
                                          <td>@awardLogic.GetById(elem).Id</td>
                                          <td>@awardLogic.GetById(elem).Name</td>
+                                         <td>
+                                             @{
+                                                 if (awardLogic.GetById(elem).Photo != null)
+                                                 {
+                                                     <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(awardLogic.GetById(elem).Photo))">
+                                                 }
+                                             }
+
+                                         </td>
                                      </tr>
                                  }
                              </tbody>

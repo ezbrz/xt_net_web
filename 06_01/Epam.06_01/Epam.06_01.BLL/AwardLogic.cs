@@ -32,9 +32,9 @@ namespace Epam._06_01.BLL
         {
             return _awardDAO.GetAll();
         }
-        public bool EditById(uint id, string newValue)
+        public bool EditById(uint id, string newValue, byte[] photo)
         {
-            return _awardDAO.EditById(id, newValue);
+            return _awardDAO.EditById(id, newValue, photo);
         }
     }
 }

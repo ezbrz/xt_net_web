@@ -99,7 +99,7 @@ namespace Epam._06_01.DAL
                 return false;
             }
         }
-        public bool EditById(uint id, string newValue)
+        public bool EditById(uint id, string newValue, byte[] photo)
         {
             try
             {

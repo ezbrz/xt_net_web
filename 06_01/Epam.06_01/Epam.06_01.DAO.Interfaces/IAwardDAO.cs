@@ -13,6 +13,6 @@ namespace Epam._06_01.DAO.Interfaces
         Award GetById(uint id);
         bool DeleteById(uint id);
         IEnumerable<Award> GetAll();
-        bool EditById(uint id, string newValue);
+        bool EditById(uint id, string newValue, byte[] newPhoto);
     }
 }
