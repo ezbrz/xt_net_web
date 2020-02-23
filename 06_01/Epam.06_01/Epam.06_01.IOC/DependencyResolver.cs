@@ -26,18 +26,24 @@ namespace Epam._06_01.IOC
         static DependencyResolver()
         {
             var dataReadConfig = DataMode.GetLogic("DataMode");
-            if (dataReadConfig == "XML")
+            switch (dataReadConfig)
             {
-                UserDAO = new UserXmlDAO();
-                AwardDAO = new AwardXMLDAO();
-            }else if (dataReadConfig == "Memory")
-            {
-                UserDAO = new UserFakeDAO();
-            AwardDAO = new AwardFakeDAO();
-            }
-            else
-            {
-                throw new Exception("Can't start application");
+                case "XML":
+                    UserDAO = new UserXmlDAO();
+                    AwardDAO = new AwardXMLDAO();
+                    break;
+                case "Memory":
+                    UserDAO = new UserFakeDAO();
+                    AwardDAO = new AwardFakeDAO();
+                    break;
+                case "DB":
+                    UserDAO = new UserDbDAO();
+                    AwardDAO = new AwardDbDAO();
+                    break;
+                default:
+                    UserDAO = new UserFakeDAO();
+                    AwardDAO = new AwardFakeDAO();
+                    break;
             }
         }
         
