@@ -48,14 +48,21 @@ namespace Epam._06_01.DAL
                     };
                     var photoParametr = new SqlParameter()
                     {
-                        DbType = DbType.String,
+                        DbType = DbType.Binary,
                         ParameterName = "@photo",
                         Value = award.Photo,
-                        Direction = ParameterDirection.Output
+                        IsNullable = true,
+                        Direction = ParameterDirection.Input
                     };
+                    if (award.Photo.Length == 0) {
+                        command.Parameters.Add(photoParametr).Value=DBNull.Value;
+                    }
+                    else
+                    {
+                        command.Parameters.Add(photoParametr);
+                    }
                     command.Parameters.Add(idParametr);
                     command.Parameters.Add(nameParametr);
-                    command.Parameters.Add(photoParametr);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
@@ -115,12 +122,21 @@ namespace Epam._06_01.DAL
                 {
                     DbType = DbType.Binary,
                     ParameterName = "@newPhoto",
+                    IsNullable = true,
                     Value = photo,
                     Direction = ParameterDirection.Input
                 };
+                if (photo.Length == 0)
+                {
+                    command.Parameters.Add(photoParametr).Value = DBNull.Value;
+                }
+                else
+                {
+                    command.Parameters.Add(photoParametr);
+                }
                 command.Parameters.Add(idParametr);
                 command.Parameters.Add(nameParametr);
-                command.Parameters.Add(photoParametr);
+
                 connection.Open();
                 command.ExecuteNonQuery();
                 _edited = true;
