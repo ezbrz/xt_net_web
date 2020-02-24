@@ -1,22 +1,27 @@
-﻿@using Epam._06_01.WebPL.Models;
-@using Epam._06_01.BLL.Interfaces;
+﻿@using Epam._06_01.BLL.Interfaces;
 @using Epam._06_01.IOC;
+@using Epam._06_01.Entities;
 @{
     Layout = null;
-    string PageTitle = "Sign in";
-
+    string PageTitle = "SignUp";
+    string errorMessage = "";
     string name = null;
-
     name = Request["login"];
 
-    if(IsPost)
+    if (IsPost)
     {
         IAuthUserLogic authUserLogic = DependencyResolver.AuthUserLogic;
-        if (authUserLogic.GetByName(name) != null) 
-        { 
+        if (authUserLogic.Registrate(new AuthUser { Name = name, IsAdmin = false }))
+        {
             FormsAuthentication.SetAuthCookie(name, createPersistentCookie: true);
+            Response.Redirect("/");
         }
-        Response.Redirect("/");
+        else
+        {
+            errorMessage = "User with this username already exist";
+        }
+
+
 
     }
 }
@@ -30,7 +35,7 @@
 <body>
     @RenderPage("~/Pages/_BodyLayout.cshtml")
     <!--Content section-->
-    <form action="~/Pages/signIn" method="post" class="form-edit">
+    <form action="~/Pages/signUp" method="post" class="form-edit">
         <div class="form-group row">
             <label for="login" class="col-sm-2 col-form-label">Login</label>
             <div class="col-sm-10">
@@ -38,9 +43,10 @@
             </div>
             <div class="form-edit-alert alert alert-danger col-xs-6">!!!</div>
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Sign in</button>
+        <button type="submit" class="btn btn-primary mb-2">Sign up</button>
     </form>
     <a href="/"><div class="btn btn-info">Back to index</div></a>
+    <div>@errorMessage</div>
     <!--Content section-->
     @RenderPage("~/Pages/_FooterLayout.cshtml")
 

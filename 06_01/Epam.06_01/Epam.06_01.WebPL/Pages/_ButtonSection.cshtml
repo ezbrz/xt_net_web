@@ -1,5 +1,16 @@
-﻿<a href="~/dataMode"><div class="btn btn-danger">Switch data access mode</div></a>
-<a href="/"><div class="btn btn-info">Users</div></a>
-<a href="~/awards"><div class="btn btn-info">Awards</div></a>
-<a href="~/AddUser"><div class="btn btn-info">New user</div></a>
-<a href="~/AddAward"><div class="btn btn-info">New award</div></a>
+﻿@using Epam._06_01.WebPL.Models;
+@{MyRoleProvider roleProvider = new MyRoleProvider(); }
+@{ if (User.Identity.IsAuthenticated)
+    {
+        <a href="/"><div class="btn btn-info">Users</div></a>
+        <a href="~/awards"><div class="btn btn-info">Awards</div></a>
+    }
+}
+@{ if (roleProvider.IsUserInRole(User.Identity.Name,"ADMIN"))
+    {
+        <a href="~/dataMode"><div class="btn btn-danger">Switch data access mode</div></a>
+        <a href="~/AddUser"><div class="btn btn-info">New user</div></a>
+        <a href="~/AddAward"><div class="btn btn-info">New award</div></a>
+    }
+}
+

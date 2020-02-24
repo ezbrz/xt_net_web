@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthUserDAO.cs" />
     <Compile Include="AwardDbDAO.cs" />
     <Compile Include="AwardFakeDAO.cs" />
     <Compile Include="AwardXMLDAO.cs" />

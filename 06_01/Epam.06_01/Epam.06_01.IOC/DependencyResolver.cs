@@ -17,11 +17,14 @@ namespace Epam._06_01.IOC
 
         public static IUserDAO UserDAO;
         public static IAwardDAO AwardDAO;
+        public static IAuthUserDAO AuthUserDAO;
 
         private static IUserLogic _userLogic;
         private static IAwardLogic _awardLogic;
+        private static IAuthUserLogic _authUserLogic;
         public static IUserLogic UserLogic => _userLogic ?? (_userLogic = new UserLogic(UserDAO));
         public static IAwardLogic AwardLogic => _awardLogic ?? (_awardLogic = new AwardLogic(AwardDAO));
+        public static IAuthUserLogic AuthUserLogic => _authUserLogic ?? (_authUserLogic = new AuthUserLogic(AuthUserDAO));
 
         static DependencyResolver()
         {
@@ -45,6 +48,7 @@ namespace Epam._06_01.IOC
                     AwardDAO = new AwardFakeDAO();
                     break;
             }
+            AuthUserDAO = new AuthUserDAO();
         }
         
     }

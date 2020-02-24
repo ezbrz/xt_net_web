@@ -2,7 +2,13 @@
 @using Epam._06_01.Entities;
 @using Epam._06_01.Handlers;
 @using Epam._06_01.IOC;
+@using Epam._06_01.WebPL.Models;
 @{
+    MyRoleProvider roleProvider = new MyRoleProvider();
+    if (!roleProvider.IsUserInRole(User.Identity.Name, "ADMIN"))
+    {
+        Response.Redirect("~");
+    }
     Layout = null;
     string PageTitle = "Web application :: DataMode";
     IUserLogic userLogic = DependencyResolver.UserLogic;
